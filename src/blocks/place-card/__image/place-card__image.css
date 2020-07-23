@@ -1,0 +1,24 @@
+
+
+
+.place-card__image {
+  height: 282px;
+  width: 282px;
+  margin: 0 auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #82aa9a;
+  text-align: center;
+}
+
+.place-card__image::after {
+  content: '';
+  display: block;
+  width: 282px;
+  height: 282px;
+  background-color: rgba(230, 229, 216, 0.9);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+

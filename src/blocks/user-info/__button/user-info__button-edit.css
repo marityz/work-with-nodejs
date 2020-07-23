@@ -1,0 +1,11 @@
+
+.user-info__button-edit{
+    font-family: Inter, Arial, sans-serif;
+    margin-top: 24px;
+    margin-bottom: 32px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    background: #000000;
+}
