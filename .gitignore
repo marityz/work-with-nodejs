@@ -13,5 +13,4 @@ npm-debug.log*
 
 # Optional REPL history
 .DS_Store
-webpack.config.js
-babel.config.js
+
