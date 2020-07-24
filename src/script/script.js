@@ -1,4 +1,3 @@
-
 import "./../pages/index.css";
 import Api from  "./Api.js";
 import Card from "./Card";

@@ -1,0 +1,17 @@
+.popup.popup_is-opened {
+  display: flex;
+  z-index: 2;
+
+}
+
+.popup-image.popup_is-opened{
+  max-height: 80vh;
+  max-width: 80vw;
+  top: 10%;
+  left: 10%;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(230, 229, 216, 0.7);
+  display: flex;
+}
+

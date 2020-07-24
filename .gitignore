@@ -13,5 +13,5 @@ npm-debug.log*
 
 # Optional REPL history
 .DS_Store
-.idea
-.vscode
+webpack.config.js
+babel.config.js

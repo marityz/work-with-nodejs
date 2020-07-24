@@ -1,0 +1,6 @@
+.profile {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  margin:0 auto 0 auto;
+}
