@@ -10,6 +10,9 @@
 После чего можно запускать локальный сервер: 
 - npm run start
 
+Для разработки можно запустить сервер на localhost:3000 с хот релоудом:
+- npm run dev
+
 GET localhost:3000/users возвращает	JSON-список всех пользователей
 GET localhost:3000/cards возвращает JSON-список всех карточек
 GET localhost:3000/users/8340d0ec33270a25f2413b69	JSON-пользователя

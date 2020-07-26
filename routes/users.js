@@ -2,33 +2,48 @@ const usersRouter = require('express').Router();
 const fsPromises = require('fs').promises;
 const path = require('path');
 
-const usersPath = path.join('data', 'users.json');
+const usersPath = path.join(__dirname, '../data/users.json');
 
-usersRouter.get('/users', (req, res) => {
+usersRouter.get('/', (req, res) => {
   fsPromises.readFile(usersPath, { encoding: 'utf8' })
     .then((data) => {
-      res.send(JSON.parse(data));
+      try {
+        const json = JSON.parse(data);
+        return json;
+      } catch (e) {
+        res.status(415).send({ message: 'Не удалось распознать формат файла' });
+      }
+    })
+    .then((json) => {
+      res.send(json);
     })
     .catch((err) => {
-      res.status(500).send({ message: 'Запрашиваемый файл не найден, отвалите' });
+      res.status(500).send({ message: ` Произошла ошибка ${err} ` });
     });
 });
 
-usersRouter.get('/users/:id', (req, res) => {
+usersRouter.get('/:id', (req, res) => {
   const { id } = req.params;
 
   fsPromises.readFile(usersPath, { encoding: 'utf8' })
     .then((data) => {
-      if (!(JSON.parse(data).some((item) => item._id === id))) {
+      try {
+        const json = JSON.parse(data);
+        return json;
+      } catch (e) {
+        res.status(415).send({ message: 'Не удалось распознать формат файла' });
+      }
+    })
+    .then((json) => {
+      if (!(json.some((elem) => elem._id === id))) {
         res.status(404).send({ message: 'Нет пользователя с таким id' });
         return;
       }
-      res.send(JSON.parse(data).find((item) => item._id === id));
+      res.send(json.find((elem) => elem._id === id));
     })
     .catch((err) => {
-      res.status(500).send({ message: 'Запрашиваемый файл не найден' });
+      res.status(500).send({ message: ` Произошла ошибка ${err} ` });
     });
 });
 
 module.exports = usersRouter;
-

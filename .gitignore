@@ -14,7 +14,4 @@ npm-debug.log*
 # Optional REPL history
 .DS_Store
 /src
-babel.config.js
-package-lock.json
-postcss.config.js
-webpack.config.js
+

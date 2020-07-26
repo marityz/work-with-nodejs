@@ -8,11 +8,11 @@ const { PORT = 3000 } = process.env;
 const app = express();
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', cards);
-app.use('/', users);
+app.use('/cards', cards);
+app.use('/users', users);
 
 app.get('*', (req, res) => {
-  res.status(405).send({
+  res.status(404).send({
     message: 'Запрашиваемый ресурс не найден',
   });
 });
