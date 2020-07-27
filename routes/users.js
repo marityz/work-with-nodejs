@@ -8,14 +8,15 @@ usersRouter.get('/', (req, res) => {
   fsPromises.readFile(usersPath, { encoding: 'utf8' })
     .then((data) => {
       try {
-        const json = JSON.parse(data);
-        return json;
+        const fileUsers = JSON.parse(data);
+        return fileUsers;
       } catch (e) {
         res.status(415).send({ message: 'Не удалось распознать формат файла' });
+        return undefined;
       }
     })
-    .then((json) => {
-      res.send(json);
+    .then((jsonUsers) => {
+      res.send(jsonUsers);
     })
     .catch((err) => {
       res.status(500).send({ message: ` Произошла ошибка ${err} ` });
@@ -28,18 +29,19 @@ usersRouter.get('/:id', (req, res) => {
   fsPromises.readFile(usersPath, { encoding: 'utf8' })
     .then((data) => {
       try {
-        const json = JSON.parse(data);
-        return json;
+        const jsonFile = JSON.parse(data);
+        return jsonFile;
       } catch (e) {
         res.status(415).send({ message: 'Не удалось распознать формат файла' });
+        return undefined;
       }
     })
-    .then((json) => {
-      if (!(json.some((elem) => elem._id === id))) {
+    .then((jsonFile) => {
+      if (!(jsonFile.some((user) => user._id === id))) {
         res.status(404).send({ message: 'Нет пользователя с таким id' });
         return;
       }
-      res.send(json.find((elem) => elem._id === id));
+      res.send(jsonFile.find((user) => user._id === id));
     })
     .catch((err) => {
       res.status(500).send({ message: ` Произошла ошибка ${err} ` });

@@ -8,14 +8,15 @@ cardsRouter.get('/', (req, res) => {
   fsPromises.readFile(cardsPath, { encoding: 'utf8' })
     .then((data) => {
       try {
-        const json = JSON.parse(data);
-        return json;
+        const fileCards = JSON.parse(data);
+        return fileCards;
       } catch (e) {
         res.status(415).send({ message: 'Не удалось распознать формат файла' });
+        return undefined;
       }
     })
-    .then((json) => {
-      res.send(json);
+    .then((jsonCards) => {
+      res.send(jsonCards);
     })
     .catch((err) => {
       res.status(500).send({ message: ` Произошла ошибка ${err} ` });
